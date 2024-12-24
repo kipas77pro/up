@@ -58,7 +58,7 @@ asu=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/Arya-Blitar",
       "type": "none",
       "host": "${domain}",
       "tls": "tls"
@@ -73,7 +73,7 @@ ask=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/Arya-Blitar",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -117,7 +117,7 @@ echo -e "id            : ${uuid}"
 echo -e "alterId       : 0" 
 echo -e "Security      : auto" 
 echo -e "Network       : ws" 
-echo -e "Path          : /vmess" 
+echo -e "Path          : /Arya-Blitar" 
 echo -e "ServiceName   : vmess-grpc" 
 echo -e "\033[0;34m════════════════════════════════${NC}" 
 echo -e "Link TLS : "
@@ -158,7 +158,7 @@ asu=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/Arya-Blitar",
       "type": "none",
       "host": "${domain}",
       "tls": "tls"
@@ -173,7 +173,7 @@ ask=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/Arya-Blitar",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -217,7 +217,7 @@ echo -e "id            : ${uuid}"
 echo -e "alterId       : 0" 
 echo -e "Security      : auto" 
 echo -e "Network       : ws" 
-echo -e "Path          : /vmess" 
+echo -e "Path          : /Arya-Blitar" 
 echo -e "ServiceName    : vmess-grpc"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
 echo -e "Link TLS       : ${vmesslink1}"
@@ -381,7 +381,7 @@ asu=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/Arya-Blitar",
       "type": "none",
       "host": "${domain}",
       "tls": "tls"
@@ -396,7 +396,7 @@ ask=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/Arya-Blitar",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -437,7 +437,7 @@ echo -e "id            : ${uuid}"
 echo -e "alterId       : 0" 
 echo -e "Security      : auto" 
 echo -e "Network       : ws" 
-echo -e "Path          : /vmess" 
+echo -e "Path          : /Arya-Blitar" 
 #echo -e "Path          : /worryfree" 
 #echo -e "Path          : http://bug/worryfree" 
 #echo -e "Path          : /kuota-habis" 
