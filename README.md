@@ -7,3 +7,9 @@ wget -O upray "raw.githubusercontent.com/kipas77pro/up/main/upray.sh" && chmod +
 ````
 wget -O menu-vmess "raw.githubusercontent.com/kipas77pro/up/main/menu-vmess.sh" && chmod +x menu-vmess
 ````
+
+## udepe
+
+````
+wget -O udepe "raw.githubusercontent.com/kipas77pro/up/main/udepe" && chmod +x udepe
+````
