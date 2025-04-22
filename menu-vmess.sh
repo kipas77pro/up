@@ -222,11 +222,11 @@ vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 clear
+echo "tunnel vmess ${user}" | at now +$pup minutes &> /dev/null
 clear
 echo -e "\033[0;34m═════════════\033[0;33mXRAY/VMESS\033[0;34m═════════════\033[0m"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
 #echo -e "Remarks       : ${user}"
-echo "tunnel vmess ${user}" | at now +$pup minutes &> /dev/null
 echo -e "Domain        : ${domain}" 
 echo -e "Port none TLS : 80, 8080, 8880, 2082, 2052, 2095"
 echo -e "Port TLS      : 443, 8443, 2087, 2096, 2053, 2083"
@@ -244,7 +244,7 @@ echo -e "Link none TLS  : ${vmesslink2}"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
 echo -e "Link gRPC      : ${vmesslink3}"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
-echo -e "Expired On     : $exp"
+echo -e "Aktif Selama     : $pup menit"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
