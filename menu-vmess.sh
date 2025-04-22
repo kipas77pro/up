@@ -143,14 +143,14 @@ domain=$(cat /etc/xray/domain)
 masaaktif=1
 user=Trial-VM`</dev/urandom tr -dc 0-9 | head -c3`
 clear
-echo -e "\033[1;96m______________________\033[0m"
+echo -e "\033[1;94m_______________________\033[0m"
 echo -e " Set Expired In Minutes           "
-echo -e "\033[1;96m______________________\033[0m"
+echo -e "\033[1;94m_______________________\033[0m"
 echo -e ""
 echo -e ""
-echo -e "\033[1;96m______________________\033[0m"
+echo -e "\033[1;94m_______________________\033[0m"
 read -p " Menit : " pup
-echo -e "\033[1;96m______________________\033[0m"
+echo -e "\033[1;94m_______________________\033[0m"
 clear 
 uuid=$(cat /proc/sys/kernel/random/uuid)
 exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
