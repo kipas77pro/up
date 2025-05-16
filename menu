@@ -88,7 +88,7 @@ let ssa=$ssx/2
 function St_System() {
 clear
 echo -e "   ${UK}───────────────────────────────────────────────────${Suffix}"
-echo -e "   \e[92;1m          .::::.${Suffix}${R2} PUSAT BLITAR A1 \e[92;1m.::::.${Suffix}"
+echo -e "   \e[92;1m              .::::.${Suffix}${R2} KaisarVPN\e[92;1m.::::.${Suffix}"
 echo -e "   ${UK}───────────────────────────────────────────────────${Suffix}"
 echo -e "       ${UK}┌────────────────────────────────────────┐${Suffix}"
 echo -e "       ${UK}│${BK} SYS OS :${Suffix} ${R2}$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${Suffix}"
