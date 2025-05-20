@@ -1,16 +1,6 @@
 #!/bin/bash
-function CEKIP () {
-MYIP=$(curl -sS ipv4.icanhazip.com)
-#IPVPS=$(curl -sS https://raw.githubusercontent.com/Arya-Blitar22/sct/main/ipmini | grep $MYIP | awk '{print $4}')
-if [[ $MYIP == $IPVPS ]]; then
-domain
-Casper2
-else
-  key2
-  domain
-  Casper2
-fi
-}
+#########################
+
 clear
 red='\e[1;31m'
 green='\e[0;32m'
@@ -22,578 +12,166 @@ tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+echo -e "\033[0;37m Wellcome Script Arya Blitar "
+echo -e " Tuk Infonya Silahkan Hubungi Admin"
+echo -e " Version MultiPort "
+echo -e "\033[0;36m By Arya Blitar 087721815317 "
+echo -e "\033[0;32m"
+
+# ==========================================
+MYIP=$(wget -qO- icanhazip.com);
+clear
+clear
 cd /root
+#System version number
 if [ "${EUID}" -ne 0 ]; then
-echo "You need to run this script as root"
-exit 1
+		echo "You need to run this script as root"
+		exit 1
 fi
 if [ "$(systemd-detect-virt)" == "openvz" ]; then
-echo "OpenVZ is not supported"
-exit 1
+		echo "OpenVZ is not supported"
+		exit 1
 fi
+
 localip=$(hostname -I | cut -d\  -f1)
 hst=( `hostname` )
 dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
 if [[ "$hst" != "$dart" ]]; then
 echo "$localip $(hostname)" >> /etc/hosts
 fi
-secs_to_human() {
-echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
-}
-rm -rf /etc/rmbl
-mkdir -p /etc/rmbl
-mkdir -p /etc/rmbl/theme
-mkdir -p /var/lib/ >/dev/null 2>&1
-echo "IP=" >> /var/lib/ipvps.conf
-clear
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│              MASUKKAN NAMA KAMU          │${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $name =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan Nama Kamu Disini tanpa spasi : " -e name
-done
-rm -rf /etc/profil
-echo "$name" > /etc/profil
-echo ""
-clear
-author=$(cat /etc/profil)
-echo ""
-echo ""
 
-}
-function domain(){
-fun_bar() {
-    CMD[0]="$1"
-    CMD[1]="$2"
-    (
-        [[ -e $HOME/fim ]] && rm $HOME/fim
-        ${CMD[0]} -y >/dev/null 2>&1
-        ${CMD[1]} -y >/dev/null 2>&1
-        touch $HOME/fim
-    ) >/dev/null 2>&1 &
-    tput civis
-    echo -ne "  \033[0;33mUpdate Domain.. \033[1;37m- \033[0;33m["
-    while true; do
-        for ((i = 0; i < 18; i++)); do
-            echo -ne "\033[0;32m#"
-            sleep 0.1s
-        done
-        [[ -e $HOME/fim ]] && rm $HOME/fim && break
-        echo -e "\033[0;33m]"
-        sleep 1s
-        tput cuu1
-        tput dl1
-        echo -ne "  \033[0;33mUpdate Domain... \033[1;37m- \033[0;33m["
-    done
-    echo -e "\033[0;33m]\033[1;37m -\033[1;32m Succes !\033[1;37m"
-    tput cnorm
-}
-res1() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
-clear
-}
-res2() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
-clear
-}
-res3() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
-clear
-}
-res4() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
-clear
-}
-clear
-cd
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│ \033[1;37mPlease select a your Choice to Set Domain${tyblue}│${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│  [ 1 ]  \033[1;37mDomain kamu sendiri        ${NC}"
-echo -e "${tyblue}│  "                                        
-echo -e "${tyblue}│  [ 2 ]  \033[1;37mDomain Yang Punya Script      ${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-until [[ $domain =~ ^[132]+$ ]]; do 
-read -p "   Please select numbers 1  atau 2 : " domain
-done
-if [[ $domain == "1" ]]; then
-clear
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│              \033[1;37mTERIMA KASIH                ${tyblue}│${NC}"
-echo -e  "${tyblue}│         \033[1;37mSUDAH MENGGUNAKAN SCRIPT         ${tyblue}│${NC}"
-echo -e  "${tyblue}│                \033[1;37mDARI SAYA                 ${tyblue}│${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $dnss =~ ^[a-zA-Z0-9_.-]+$ ]]; do 
-read -rp "Masukan domain kamu Disini : " -e dnss
-done
-rm -rf /etc/xray
-rm -rf /etc/v2ray
-rm -rf /etc/nsdomain
-rm -rf /etc/per
 mkdir -p /etc/xray
 mkdir -p /etc/v2ray
-mkdir -p /etc/nsdomain
 touch /etc/xray/domain
 touch /etc/v2ray/domain
-touch /etc/xray/slwdomain
+touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
-echo "$dnss" > /root/domain
-echo "$dnss" > /root/scdomain
-echo "$dnss" > /etc/xray/scdomain
-echo "$dnss" > /etc/v2ray/scdomain
-echo "$dnss" > /etc/xray/domain
-echo "$dnss" > /etc/v2ray/domain
-echo "IP=$dnss" > /var/lib/ipvps.conf
-echo ""
-clear
-fi
-if [[ $domain == "2" ]]; then
-clear
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│ \033[1;37mPlease select a your Choice to Set Domain${tyblue}│${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│  [ 1 ]  \033[1;37mDomain xxx.server-tunneling.systems          ${NC}"
-echo -e "${tyblue}│  [ 2 ]  \033[1;37mDomain xxx.supersaiya.ninja          ${NC}"
-echo -e "${tyblue}│  [ 3 ]  \033[1;37mDomain xxx.vpn-premium.my.id          ${NC}"
-echo -e "${tyblue}│  [ 4 ]  \033[1;37mDomain xxx.vpn-premium.tech          ${NC}"                                        
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-until [[ $domain2 =~ ^[1-4]+$ ]]; do 
-read -p "   Please select numbers 1 sampai 4 : " domain2
-done
-fi
-if [[ $domain2 == "1" ]]; then
-clear
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│  \033[1;37mContoh subdomain xxx.server-tunneling.systems        ${tyblue}│${NC}"
-echo -e  "${tyblue}│    \033[1;37mxxx jadi subdomain kamu               ${tyblue}│${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $dn1 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn1
-done
-rm -rf /etc/xray
-rm -rf /etc/v2ray
-rm -rf /etc/nsdomain
-rm -rf /etc/per
-mkdir -p /etc/xray
-mkdir -p /etc/v2ray
-mkdir -p /etc/nsdomain
-touch /etc/xray/domain
-touch /etc/v2ray/domain
-touch /etc/xray/slwdomain
-touch /etc/v2ray/scdomain
-echo "$dn1" > /root/domain
-echo "$dn1" > /root/scdomain
-echo "$dn1" > /etc/xray/scdomain
-echo "$dn1" > /etc/v2ray/scdomain
-echo "$dn1" > /etc/xray/domain
-echo "$dn1" > /etc/v2ray/domain
-echo "IP=$dn1" > /var/lib/ipvps.conf
-echo ""
-clear
-cd
+
+
+echo -e "[ ${tyblue}NOTES${NC} ] Sebelum kita pergi.. "
 sleep 1
-fun_bar 'res1'
-clear
-rm /root/subdomainx
-elif [[ $domain2 == "2" ]]; then
-clear
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│  \033[1;37mContoh subdomain xxx.supersaiya.ninja         ${tyblue}│${NC}"
-echo -e  "${tyblue}│    \033[1;37mxxx jadi subdomain kamu               ${tyblue}│${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $dn2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn2
-done
-rm -rf /etc/xray
-rm -rf /etc/v2ray
-rm -rf /etc/nsdomain
-rm -rf /etc/per
-mkdir -p /etc/xray
-mkdir -p /etc/v2ray
-mkdir -p /etc/nsdomain
-touch /etc/xray/domain
-touch /etc/v2ray/domain
-touch /etc/xray/slwdomain
-touch /etc/v2ray/scdomain
-echo "$dn2" > /root/domain
-echo "$dn2" > /root/scdomain
-echo "$dn2" > /etc/xray/scdomain
-echo "$dn2" > /etc/v2ray/scdomain
-echo "$dn2" > /etc/xray/domain
-echo "$dn2" > /etc/v2ray/domain
-echo "IP=$dn2" > /var/lib/ipvps.conf
-echo ""
-cd
+echo -e "[ ${tyblue}NOTES${NC} ] Saya perlu memeriksa tajuk Anda terlebih dahulu .."
+sleep 2
+echo -e "[ ${green}INFO${NC} ] Memeriksa header"
 sleep 1
-fun_bar 'res1'
-clear
-elif [[ $domain2 == "3" ]]; then
-clear
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│  \033[1;37mContoh subdomain xxx.vpn-premium.my.id        ${tyblue}│${NC}"
-echo -e  "${tyblue}│    \033[1;37mxxx jadi subdomain kamu               ${tyblue}│${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $dn3 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn3
-done
-rm -rf /etc/xray
-rm -rf /etc/v2ray
-rm -rf /etc/nsdomain
-rm -rf /etc/per
-mkdir -p /etc/xray
-mkdir -p /etc/v2ray
-mkdir -p /etc/nsdomain
-touch /etc/xray/domain
-touch /etc/v2ray/domain
-touch /etc/xray/slwdomain
-touch /etc/v2ray/scdomain
-echo "$dn3" > /root/domain
-echo "$dn3" > /root/scdomain
-echo "$dn3" > /etc/xray/scdomain
-echo "$dn3" > /etc/v2ray/scdomain
-echo "$dn3" > /etc/xray/domain
-echo "$dn3" > /etc/v2ray/domain
-echo "IP=$dn3" > /var/lib/ipvps.conf
-echo ""
-cd
-sleep 1
-fun_bar 'res1'
-clear
-rm /root/subdomainx
-elif [[ $domain2 == "4" ]]; then
-clear
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│  \033[1;37mContoh subdomain xxx.vpn-premium.tech        ${tyblue}│${NC}"
-echo -e  "${tyblue}│    \033[1;37mxxx jadi subdomain kamu               ${tyblue}│${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $dn4 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn4
-done
-rm -rf /etc/xray
-rm -rf /etc/v2ray
-rm -rf /etc/nsdomain
-rm -rf /etc/per
-mkdir -p /etc/xray
-mkdir -p /etc/v2ray
-mkdir -p /etc/nsdomain
-touch /etc/xray/domain
-touch /etc/v2ray/domain
-touch /etc/xray/slwdomain
-touch /etc/v2ray/scdomain
-echo "$dn4" > /root/domain
-echo "$dn4" > /root/scdomain
-echo "$dn4" > /etc/xray/scdomain
-echo "$dn4" > /etc/v2ray/scdomain
-echo "$dn4" > /etc/xray/domain
-echo "$dn4" > /etc/v2ray/domain
-echo "IP=$dn4" > /var/lib/ipvps.conf
-echo ""
-cd
-sleep 1
-fun_bar 'res1'
+totet=`uname -r`
+REQUIRED_PKG="linux-headers-$totet"
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+echo Checking for $REQUIRED_PKG: $PKG_OK
+if [ "" = "$PKG_OK" ]; then
+  sleep 2
+  echo -e "[ ${yell}WARNING${NC} ] Coba pasang ..."
+  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
+  apt-get --yes install $REQUIRED_PKG
+  sleep 1
+  echo ""
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] Jika kesalahan Anda perlu .. untuk melakukan ini"
+  sleep 1
+  echo ""
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 1. apt update -y"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 2. apt upgrade -y"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 3. apt dist-upgrade -y"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 4. reboot"
+  sleep 1
+  echo ""
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] Setelah reboot"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] Kemudian jalankan skrip ini lagi"
+  echo -e "[ ${tyblue}NOTES${NC} ] jika kamu mengerti maka ketuk masuk sekarang"
+  read
+else
+  echo -e "[ ${green}INFO${NC} ] Oke terpasang"
 fi
-if [[ $domain == "3" ]]; then
-clear
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│              \033[1;37mTERIMA KASIH                ${tyblue}│${NC}"
-echo -e  "${tyblue}│         \033[1;37mSUDAH MENGGUNAKAN SCRIPT         ${tyblue}│${NC}"
-echo -e  "${tyblue}│                \033[1;37mDARI SAYA                 ${tyblue}│${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $dns1 =~ ^[a-zA-Z0-9_.-]+$ ]]; do 
-read -rp "Masukan domain kamu Disini : " -e dns1
-done
-echo ""
-echo "$dns1" > /etc/xray/domain
-echo "$dns1" > /etc/v2ray/domain
-echo "IP=$dns1" > /var/lib/ipvps.conf
-clear
-echo ""
-echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│              \033[1;37mTERIMA KASIH                ${tyblue}│${NC}"
-echo -e  "${tyblue}│         \033[1;37mSUDAH MENGGUNAKAN SCRIPT         ${tyblue}│${NC}"
-echo -e  "${tyblue}│                \033[1;37mDARI SAYA                 ${tyblue}│${NC}"
-echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
-echo " "
-until [[ $dns2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan Domain SlowDNS kamu Disini : " -e dns2
-done
-echo $dns2 >/etc/xray/dns
+
+ttet=`uname -r`
+ReqPKG="linux-headers-$ttet"
+if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
+  rm /root/setup.sh >/dev/null 2>&1 
+  exit
+else
+  clear
 fi
+
+
+secs_to_human() {
+    echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
 }
-\E[40;1;41m
-TEXT : \033[0;31m
-EOF
-cat <<EOF>> /etc/rmbl/theme/green
-BG : \E[40;1;42m
-TEXT : \033[0;32m
-EOF
-cat <<EOF>> /etc/rmbl/theme/yellow
-BG : \E[40;1;43m
-TEXT : \033[0;33m
-EOF
-cat <<EOF>> /etc/rmbl/theme/red
-BG : \E[40;1;41m
-TEXT : \033[0;31m
-EOF
-cat <<EOF>> /etc/rmbl/theme/blue
-BG : \E[40;1;44m
-TEXT : \033[0;34m
-EOF
-cat <<EOF>> /etc/rmbl/theme/magenta
-BG : \E[40;1;45m
-TEXT : \033[0;35m
-EOF
-cat <<EOF>> /etc/rmbl/theme/cyan
-BG : \E[40;1;46m
-TEXT : \033[0;36m
-EOF
-cat <<EOF>> /etc/rmbl/theme/lightgray
-BG : \E[40;1;47m
-TEXT : \033[0;37m
-EOF
-cat <<EOF>> /etc/rmbl/theme/darkgray
-BG : \E[40;1;100m
-TEXT : \033[0;90m
-EOF
-cat <<EOF>> /etc/rmbl/theme/lightred
-BG : \E[40;1;101m
-TEXT : \033[0;91m
-EOF
-cat <<EOF>> /etc/rmbl/theme/lightgreen
-BG : \E[40;1;102m
-TEXT : \033[0;92m
-EOF
-cat <<EOF>> /etc/rmbl/theme/lightyellow
-BG : \E[40;1;103m
-TEXT : \033[0;93m
-EOF
-cat <<EOF>> /etc/rmbl/theme/lightblue
-BG : \E[40;1;104m
-TEXT : \033[0;94m
-EOF
-cat <<EOF>> /etc/rmbl/theme/lightmagenta
-BG : \E[40;1;105m
-TEXT : \033[0;95m
-EOF
-cat <<EOF>> /etc/rmbl/theme/lightcyan
-BG : \E[40;1;106m
-TEXT : \033[0;96m
-EOF
-cat <<EOF>> /etc/rmbl/theme/color.conf
-lightcyan
-EOF
-function Casper2(){
-cd
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
-sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
-clear
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/tools.sh &> /dev/null
-chmod +x tools.sh 
-bash tools.sh
-clear
 start=$(date +%s)
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
+sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
+
+coreselect=''
+cat> /root/.profile << END
+# ~/.profile: executed by Bourne-compatible login shells.
+
+if [ "$BASH" ]; then
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
+fi
+
+mesg n || true
+clear
+END
+chmod 644 /root/.profile
+
+echo -e "[ ${green}INFO${NC} ] Mempersiapkan file instalasi"
 apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
-}
-function Casper3(){
-fun_bar() {
-    CMD[0]="$1"
-    CMD[1]="$2"
-    (
-        [[ -e $HOME/fim ]] && rm $HOME/fim
-        ${CMD[0]} -y >/dev/null 2>&1
-        ${CMD[1]} -y >/dev/null 2>&1
-        touch $HOME/fim
-    ) >/dev/null 2>&1 &
-    tput civis
-    echo -ne "  \033[0;33mLagi Menginstal File \033[1;37m- \033[0;33m["
-    while true; do
-        for ((i = 0; i < 18; i++)); do
-            echo -ne "\033[0;32m#"
-            sleep 0.1s
-        done
-        [[ -e $HOME/fim ]] && rm $HOME/fim && break
-        echo -e "\033[0;33m]"
-        sleep 1s
-        tput cuu1
-        tput dl1
-        echo -ne "  \033[0;33mLagi Menginstal File \033[1;37m- \033[0;33m["
-    done
-    echo -e "\033[0;33m]\033[1;37m -\033[1;32m Succes !\033[1;37m"
-    tput cnorm
-}
+echo -e "[ ${green}INFO${NC} ] Oke bagus...file instalasi sudah siap"
+sleep 2
+echo -ne "[ ${green}INFO${NC} ] Periksa izin : "
 
+mkdir -p /var/lib/SIJA >/dev/null 2>&1
+echo "IP=" >> /var/lib/SIJA/ipvps.conf
 
-res2() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+echo ""
+wget -q https://raw.githubusercontent.com/Panwas89/anjing/main/tools.sh;chmod +x tools.sh;./tools.sh
+rm tools.sh
 clear
-} 
-
-res3() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+#install ssh ovpn
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$green      Install SSH / WS               $NC"
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+sleep 2
 clear
-}
-
-res4() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/Panwas89/anjing/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://raw.githubusercontent.com/Panwas89/anjing/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+#Instal Xray
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$green          Install XRAY              $NC"
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+sleep 2
 clear
-}
-
-res5() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/Panwas89/anjing/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/Panwas89/anjing/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+#wget https://raw.githubusercontent.com/Arya-Blitar22/anjing/main/ssh/openvpn && chmod +x openvpn && ./openvpn
+wget https://raw.githubusercontent.com/Panwas89/anjing/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/Panwas89/anjing/main/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh
 clear
-}
-
-res6() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 clear
-}
-
-res7() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/menu/update.sh && chmod +x update.sh && ./update.sh
-clear
-}
-
-res8() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/slowdns/installsl.sh && chmod +x installsl.sh && bash installsl.sh
-clear
-}
-
-res9() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.sh
-clear
-}
-res10() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/noobz/noobzvpns.zip
-unzip noobzvpns.zip
-chmod +x noobzvpns/*
-cd noobzvpns
-bash install.sh
-rm -rf noobzvpns
-systemctl restart noobzvpns
-clear
-}
-
-res11() {
-wget https://raw.githubusercontent.com/Arya-Blitar22/sct/main/bin/limit.sh && chmod +x limit.sh && ./limit.sh
-clear
-}
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│      PROCESS INSTALLED SSH & OPENVPN     │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res2'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│           PROCESS INSTALLED XRAY         │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res3'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│       PROCESS INSTALLED WEBSOCKET SSH    │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res4'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│       PROCESS INSTALLED BACKUP MENU      │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res5'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│           PROCESS INSTALLED OHP          │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res6'
-
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│           DOWNLOAD EXTRA MENU            │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res7'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│           DOWNLOAD SLOWDNS               │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res8'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│           DOWNLOAD UDP COSTUM            │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res9'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│           DOWNLOAD NOOBVPN               │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res10'
-
-echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│           DOWNLOAD LIMIT                 │${NC}"
-echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-fun_bar 'res11'
-}
-
-
-function iinfo(){
-domain=$(cat /etc/xray/domain)
-TIMES="10"
-CHATID="6430177985"
-KEY="7567594287:AAGVeDwRq9QrNg6jSce30eOm9WiVtAWKxjA"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
-ISP=$(cat /etc/xray/isp)
-CITY=$(cat /etc/xray/city)
-domain=$(cat /etc/xray/domain) 
-TIME=$(date +'%Y-%m-%d %H:%M:%S')
-RAMMS=$(free -m | awk 'NR==2 {print $2}')
-MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
-MYIP=$(curl -sS ipv4.icanhazip.com)
-IZIN=$(curl -sS https://raw.githubusercontent.com/Arya-Blitar22/sct/main/ipmini | grep $MYIP | awk '{print $3}' )
-d1=$(date -d "$IZIN" +%s)
-d2=$(date -d "$today" +%s)
-EXP=$(( (d1 - d2) / 86400 ))
-
-TEXT="
-<code>━━━━━━━━━━━━━━━━━━━━</code>
-<code>⚠️ AUTOSCRIPT PREMIUM ⚠️</code>
-<code>━━━━━━━━━━━━━━━━━━━━</code>
-<code>NAME : </code><code>${author}</code>
-<code>TIME : </code><code>${TIME} WIB</code>
-<code>DOMAIN : </code><code>${domain}</code>
-<code>IP : </code><code>${MYIP}</code>
-<code>ISP : </code><code>${ISP} $CITY</code>
-<code>OS LINUX : </code><code>${MODEL2}</code>
-<code>RAM : </code><code>${RAMMS} MB</code>
-<code>EXP SCRIPT : </code><code>$EXP Days</code>
-<code>━━━━━━━━━━━━━━━━━━━━</code>
-<i> Notifikasi Installer Script...</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"🔥ᴏʀᴅᴇʀ","url":"https://t.me/Arya77pro"},{"text":"🔥GRUP","url":"https://t.me/Arya77pro"}]]}'
-curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-clear
-}
-echo "net.netfilter.nf_conntrack_max=262144" >> /etc/sysctl.conf
-echo "net.netfilter.nf_conntrack_tcp_timeout_time_wait=30" >> /etc/sysctl.conf
-sudo sysctl -p
-CEKIP
-Casper3
 cat> /root/.profile << END
+# ~/.profile: executed by Bourne-compatible login shells.
+
 if [ "$BASH" ]; then
-if [ -f ~/.bashrc ]; then
-. ~/.bashrc
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
 fi
-fi
+
 mesg n || true
 clear
 menu
 END
 chmod 644 /root/.profile
+
 if [ -f "/root/log-install.txt" ]; then
 rm /root/log-install.txt > /dev/null 2>&1
 fi
@@ -604,7 +182,6 @@ if [ ! -f "/etc/log-create-user.log" ]; then
 echo "Log All Account " > /etc/log-create-user.log
 fi
 history -c
-serverV=$( curl -sS https://raw.githubusercontent.com/Arya-Blitar22/sct/main/versi  )
 echo $serverV > /opt/.ver
 aureb=$(cat /home/re_otm)
 b=11
@@ -614,34 +191,67 @@ gg="PM"
 else
 gg="AM"
 fi
-cd
 curl -sS ifconfig.me > /etc/myipvps
-curl -s ipinfo.io/city?token=75082b4831f909 >> /etc/xray/city
-curl -s ipinfo.io/org?token=75082b4831f909  | cut -d " " -f 2-10 >> /etc/xray/isp
+#install gotop
+gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
+    gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
+    curl -sL "$gotop_link" -o /tmp/gotop.deb
+    dpkg -i /tmp/gotop.deb >/dev/null 2>&1
+    
+clear
+echo ""
+echo "Scprit Berhasil Di Install Sayank  !! "
+echo ""
+echo "===============-[ Script Created By Arya Blitar ]-==============="
+echo ""
+echo "-----------------------------------------------------------------"
+echo ""
+echo ""
+echo "   >>> Service & Port"  | tee -a log-install.txt
+echo "   - OpenSSH		: 22"  | tee -a log-install.txt
+echo "   - SSH Websocket	: 80, 8880, 2082, 8080" | tee -a log-install.txt
+echo "   - SSH SSL Websocket	: 443, 8443, 2096, 2083" | tee -a log-install.txt
+echo "   - Stunnel4		: 445, 777" | tee -a log-install.txt
+echo "   - Dropbear		: 109, 143" | tee -a log-install.txt
+echo "   - Badvpn		: 7100-7900" | tee -a log-install.txt
+echo "   - Nginx		: 81" | tee -a log-install.txt
+echo "   - Vmess TLS		: 443, 8443, 2096, 2083" | tee -a log-install.txt
+echo "   - Vmess None TLS	: 80, 8880, 2082, 8080" | tee -a log-install.txt
+echo "   - Vless TLS		: 443" | tee -a log-install.txt
+echo "   - Vless None TLS	: 80, 8880, 2082, 8080" | tee -a log-install.txt
+echo "   - Trojan GRPC        : 443, 8443, 2096, 2083" | tee -a log-install.txt
+echo "   - Trojan WS		: 443, 8443, 2096, 2083" | tee -a log-install.txt
+echo "   - Trojan Go		: 2087" | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
+echo "   - Timezone		: Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
+echo "   - Fail2Ban		: [ON]"  | tee -a log-install.txt
+echo "   - Dflate		: [ON]"  | tee -a log-install.txt
+echo "   - IPtables		: [ON]"  | tee -a log-install.txt
+echo "   - Auto-Reboot        : [ON]"  | tee -a log-install.txt
+echo "   - IPv6	        : [OFF]"  | tee -a log-install.txt
+echo "   - Autoreboot On	: $aureb:00 $gg GMT +7" | tee -a log-install.txt
+echo "   - AutoKill Multi Login User" | tee -a log-install.txt
+echo "   - Auto Delete Expired Account" | tee -a log-install.txt
+echo "   - Fully automatic script" | tee -a log-install.txt
+echo "   - VPS settings" | tee -a log-install.txt
+echo "   - Admin Control" | tee -a log-install.txt
+echo "   - Change port" | tee -a log-install.txt
+echo "   - Full Orders For Various Services" | tee -a log-install.txt
+echo ""
+echo ""
+echo "-----------------------------------------------------------------"
+echo ""
+echo "===============-[ Script Created By Arya Blitar ]-==============="
+echo -e ""
+echo -e " Wa me 087721815317 "
+echo ""
+echo "" | tee -a log-install.txt
 rm /root/setup.sh >/dev/null 2>&1
-rm /root/slhost.sh >/dev/null 2>&1
-rm /root/ssh-vpn.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
-rm /root/set-br.sh >/dev/null 2>&1
-rm /root/ohp.sh >/dev/null 2>&1
-rm /root/update.sh >/dev/null 2>&1
-rm /root/slowdns.sh >/dev/null 2>&1
-rm /root/udp-custom.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
-sleep 3
-echo  ""
-cd
-iinfo
-echo -e "${tyblue}┌────────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│  Install SCRIPT SELESAI..                  │${NC}"
-echo -e "${tyblue}└────────────────────────────────────────────┘${NC}"
-echo  ""
-sleep 4
-echo -e "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
-read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
-exit 0
-else
+echo -e "
+"
+read -n 1 -s -r -p "Klik Enter Auto Reboot"
 reboot
-fi
