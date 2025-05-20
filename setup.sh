@@ -12,10 +12,10 @@ tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-echo -e "\033[0;37m Wellcome Script Arya Blitar "
+echo -e "\033[0;37m Wellcome Script Rosi Center "
 echo -e " Tuk Infonya Silahkan Hubungi Admin"
 echo -e " Version MultiPort "
-echo -e "\033[0;36m By Arya Blitar 087721815317 "
+echo -e "\033[0;36m By Rosi Center 081931472448 "
 echo -e "\033[0;32m"
 
 # ==========================================
@@ -143,7 +143,7 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 sleep 2
 clear
 wget https://raw.githubusercontent.com/Panwas89/anjing/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
-wget https://raw.githubusercontent.com/Panwas89/anjing/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/kipas77pro/tunel/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #Instal Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green          Install XRAY              $NC"
@@ -152,7 +152,7 @@ sleep 2
 clear
 wget https://raw.githubusercontent.com/Panwas89/anjing/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 wget https://raw.githubusercontent.com/Panwas89/anjing/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
-#wget https://raw.githubusercontent.com/Arya-Blitar22/anjing/main/ssh/openvpn && chmod +x openvpn && ./openvpn
+#wget https://raw.githubusercontent.com/Panwas89/anjing/main/ssh/openvpn && chmod +x openvpn && ./openvpn
 wget https://raw.githubusercontent.com/Panwas89/anjing/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 wget https://raw.githubusercontent.com/Panwas89/anjing/main/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh
 clear
@@ -202,7 +202,7 @@ clear
 echo ""
 echo "Scprit Berhasil Di Install Sayank  !! "
 echo ""
-echo "===============-[ Script Created By Arya Blitar ]-==============="
+echo "===============-[ Script Created By Rosi Center ]-==============="
 echo ""
 echo "-----------------------------------------------------------------"
 echo ""
@@ -242,9 +242,9 @@ echo ""
 echo ""
 echo "-----------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By Arya Blitar ]-==============="
+echo "===============-[ Script Created By Rosi Center ]-==============="
 echo -e ""
-echo -e " Wa me 087721815317 "
+echo -e " Wa me 081931472448 "
 echo ""
 echo "" | tee -a log-install.txt
 rm /root/setup.sh >/dev/null 2>&1
