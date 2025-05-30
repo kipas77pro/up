@@ -4,7 +4,7 @@ NC='\033[0;37m'
 green='\033[0;32m' 
 clear
 clear
-source /var/lib/kyt/ipvps.conf
+source /var/lib/scrz-prem/ipvps.conf
 if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/xray/domain)
 else
@@ -138,6 +138,14 @@ install_ssl(){
     fi
 }
 
+# install nginx
+apt install -y nginx
+cd
+rm -fr /etc/nginx/sites-enabled/default
+rm -fr /etc/nginx/sites-available/default
+wget -q -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/kipas77pro/tunel/main/tools/nginx.conf" 
+#mkdir -p /home/vps/public_html
+wget -q -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/kipas77pro/tunel/main/tools/vps.conf"
 
 # Install Xray #
 #==========#
