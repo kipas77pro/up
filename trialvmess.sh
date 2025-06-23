@@ -12,7 +12,7 @@ export WARNING="${red}\e[5m"
 export UNDERLINE="\e[4m"
 clear
 domain=$(cat /etc/xray/domain)
-user=trialvmess`</dev/urandom tr -dc X-Z0-9 | head -c4`
+Login=trialvmess`</dev/urandom tr -dc X-Z0-9 | head -c4`
 clear
 echo -e "\033[1;96m___________________________________________\033[0m"
 echo -e " Set Expired In Minutes           "
@@ -24,15 +24,6 @@ read -p " Menit : " pup
 echo -e "\033[1;96m___________________________________________\033[0m"
 clear 
 uuid=$(cat /proc/sys/kernel/random/uuid)
-exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
-tgl=$(date -d "$masaaktif days" +"%d")
-bln=$(date -d "$masaaktif days" +"%b")
-thn=$(date -d "$masaaktif days" +"%Y")
-expe="$tgl $bln, $thn"
-tgl2=$(date +"%d")
-bln2=$(date +"%b")
-thn2=$(date +"%Y")
-tnggl="$tgl2 $bln2, $thn2"
 sed -i '/#vmess$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
@@ -93,9 +84,14 @@ vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 clear
-echo userdel -f "$user" | at now + $pup minutes
-echo "tunnel vmess ${user}" | at now +$pup minutes &> /dev/null
-
+useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
+exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
+echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
+PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
+clear
+echo userdel -f "$Login" | at now + $pup minutes
+echo "tunnel ssh ${Login}" | at now +$pup minutes &> /dev/null
+clear
 echo -e ""
 clear
 echo -e "\033[0;34m═════════════\033[0;33mXRAY/VMESS\033[0;34m═════════════\033[0m"
