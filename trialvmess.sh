@@ -84,6 +84,7 @@ vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 clear
+echo userdel -f "$user" | at now + $pup minutes
 echo "tunnel vmess ${user}" | at now +$pup minutes &> /dev/null
 clear
 echo -e ""
