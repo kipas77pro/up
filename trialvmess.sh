@@ -12,7 +12,7 @@ export WARNING="${red}\e[5m"
 export UNDERLINE="\e[4m"
 clear
 domain=$(cat /etc/xray/domain)
-Login=trialvmess`</dev/urandom tr -dc X-Z0-9 | head -c4`
+user=trialvmess`</dev/urandom tr -dc X-Z0-9 | head -c4`
 clear
 echo -e "\033[1;96m___________________________________________\033[0m"
 echo -e " Set Expired In Minutes           "
@@ -24,11 +24,11 @@ read -p " Menit : " pup
 echo -e "\033[1;96m___________________________________________\033[0m"
 clear 
 uuid=$(cat /proc/sys/kernel/random/uuid)
-sed -i '/#vmess$/a\### '"$user $exp"'\
+sed -i '/#vmess$/a\### '"$user $pup"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
-},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#vmessgrpc$/a\### '"$user $pup"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""user""'"' /etc/xray/config.json
 asu=`cat<<EOF
       {
       "v": "2",
@@ -84,19 +84,13 @@ vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 clear
-useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
-exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
-echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
-PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
-clear
-echo userdel -f "$Login" | at now + $pup minutes
-echo "tunnel vmess ${Login}" | at now +$pup minutes &> /dev/null
+echo "tunnel vmess ${user}" | at now +$pup minutes &> /dev/null
 clear
 echo -e ""
 clear
 echo -e "\033[0;34m═════════════\033[0;33mXRAY/VMESS\033[0;34m═════════════\033[0m"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
-echo -e "Remarks       : ${Login}"
+echo -e "Remarks       : ${user}"
 #echo -e "Expired On    : $exp" 
 echo -e "Domain        : ${domain}" 
 echo -e "Port none TLS : 80, 8080, 8880, 2082, 2086, 2052, 2095"
