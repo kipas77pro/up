@@ -14,14 +14,14 @@ clear
 domain=$(cat /etc/xray/domain)
 user=trialvmess`</dev/urandom tr -dc X-Z0-9 | head -c4`
 clear
-echo -e "\033[1;96m___________________________________________\033[0m"
+echo -e "\033[0;34m________________________\033[0m"
 echo -e " Set Expired In Minutes           "
-echo -e "\033[1;96m___________________________________________\033[0m"
+echo -e "\033[0;34m________________________\033[0m"
 echo -e ""
 echo -e ""
-echo -e "\033[1;96m___________________________________________\033[0m"
+echo -e "\033[0;34m________________________\033[0m"
 read -p " Menit : " pup
-echo -e "\033[1;96m___________________________________________\033[0m"
+echo -e "\033[0;34m________________________\033[0m"
 clear 
 uuid=$(cat /proc/sys/kernel/random/uuid)
 sed -i '/#vmess$/a\### '"$user $pup"'\
