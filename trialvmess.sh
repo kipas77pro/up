@@ -90,13 +90,13 @@ echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 clear
 echo userdel -f "$Login" | at now + $pup minutes
-echo "tunnel ssh ${Login}" | at now +$pup minutes &> /dev/null
+echo "tunnel vmess ${Login}" | at now +$pup minutes &> /dev/null
 clear
 echo -e ""
 clear
 echo -e "\033[0;34m═════════════\033[0;33mXRAY/VMESS\033[0;34m═════════════\033[0m"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
-echo -e "Remarks       : ${user}"
+echo -e "Remarks       : ${Login}"
 #echo -e "Expired On    : $exp" 
 echo -e "Domain        : ${domain}" 
 echo -e "Port none TLS : 80, 8080, 8880, 2082, 2086, 2052, 2095"
